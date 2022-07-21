@@ -13,4 +13,11 @@ export class AppComponent {
   title = 'teste';
   nomes = ['João', 'Maria', 'José'];
   meuNome = this.nomes[0];
+  minhaIdade = 21;
+
+  nomes_obj = [
+    { nome: 'João', idade: 21 },
+    { nome: 'Maria', idade: 22 },
+    { nome: 'José', idade: 23 }
+  ]
 }

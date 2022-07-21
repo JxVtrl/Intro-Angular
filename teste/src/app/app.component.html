@@ -1,2 +1,24 @@
 <h1>{{title}}</h1>
-<p>{{meuNome}}</p>
+<p>Meu nome é {{meuNome}} e eu tenho {{minhaIdade}} anos</p>
+
+<!-- 
+  Utilizando variaveis
+-->
+
+<input type="text" name="meu nome" value="{{meuNome}}">
+
+<!-- 
+  Criando um for 
+-->
+
+<ul>
+  <li *ngFor="let nome of nomes" style="color: red;"> <!-- Laço de repetição -->
+    {{nome}}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let item of nomes_obj" style="color: red;"> <!-- Laço de repetição -->
+    {{item.nome}} - {{item.idade}}
+  </li>
+</ul>
