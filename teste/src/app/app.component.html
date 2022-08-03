@@ -12,13 +12,96 @@
 -->
 
 <ul>
-  <li *ngFor="let nome of nomes" style="color: red;"> <!-- Laço de repetição -->
-    {{nome}}
+  <li *ngFor="let item of nomes" style="color: red;"> <!-- Laço de repetição -->
+    {{item.nome}} - {{item.id}}
   </li>
 </ul>
 
 <ul>
-  <li *ngFor="let item of nomes_obj" style="color: red;"> <!-- Laço de repetição -->
-    {{item.nome}} - {{item.idade}}
+  <li (click)="clicou(item)" *ngFor="let item of nomes_obj" style="color: red;" > <!-- Laço de repetição -->
+    {{item.nome}} - {{item.idade}} - {{item.getType()}}
   </li>
 </ul>
+
+
+<!-- 
+  Criando um if 
+-->
+<p *ngIf="nomes.length > 2">Muitos nomes cadastrados</p>
+<p *ngIf="nomes.length < 2">Poucos nomes cadastrados</p>
+
+
+<!-- 
+  Adicionando nomes 
+-->
+<div *ngIf="nomes.length < 4">
+  <input type="text" name="" id="">
+  <button>Adicionar</button>
+</div>
+
+<div *ngIf="showAviso">
+  {{avisoMsg}}
+</div>
+
+
+<!-- 
+  Bind de Props 
+-->
+<input type="text" name="nome" value="{{meuNome.nome}}">
+<input type="text" name="nome" [value]="meuNome.nome">
+<input type="text" name="nome" bind-value="meuNome.nome" [disabled]="true">
+
+<img src="{{img}}">
+<img [src]="img">
+<img bind-src="img">
+
+
+<!-- 
+  Estilizando e classe
+-->
+<div 
+  style="color: green" 
+  [style]="{fontSize: tamanho, backgroundColor: 'gray'}"
+  [style.width.px]="100"
+  [style.color]="corPrincipal"
+  >
+  Texto qualquer
+</div>
+
+<div 
+  [class]="{menu: true, active: false}"
+  >
+  Texto qualquer
+</div>
+
+<div 
+  [class]="{menu: true, active: true}"
+  >
+  Texto qualquer
+</div>
+
+<div 
+  [class.teste]="false"
+  >
+  Texto qualquer
+</div>
+
+
+<!-- 
+  Eventos
+-->
+<button (click)="corPrincipal = '#fff'">Aperte</button>
+
+<button (click)="trocarCor('#FF0000')">Aperte</button>
+
+
+<!-- 
+  Eventos do teclado
+-->
+<div>
+  {{meuNome.nome}}
+</div>
+<input type="text" [value]="meuNome.nome" (input)="trocarNome($event)">
+<input type="text" [value]="meuNome.nome" (keyup)="trocarNome($event)">
+<input type="text" [value]="meuNome.nome" (keyup.enter)="trocarNome($event)">
+
